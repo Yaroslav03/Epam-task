@@ -4,7 +4,6 @@ namespace FinalTaskTests.Pages
 {
     public class InventoryPage : BasePage
     {
-        private const string PageUrl = "https://www.saucedemo.com/";
         private readonly By productLink = By.CssSelector(".inventory_item_name");
 
         // 5 CSS Locators for UC-2
@@ -18,21 +17,13 @@ namespace FinalTaskTests.Pages
         {
         }
 
-        public void Navigate()
-        {
-            Driver.Navigate().GoToUrl(PageUrl);
-        }
-
         public void OpenByNameProduct(string productName)
         {
             WaitUntilElementIsVisible(productLink);
             var allProducts = Driver.FindElements(productLink);
 
-            var product = allProducts.First(item => 
-                (!string.IsNullOrEmpty(item.Text) && item.Text.Trim().Equals(productName, StringComparison.OrdinalIgnoreCase)) || 
-                (!string.IsNullOrEmpty(item.GetAttribute("innerText")) && item.GetAttribute("innerText")!.Trim().Equals(productName, StringComparison.OrdinalIgnoreCase)));
-            
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].click();", product);
+            var product = allProducts.First(p => p.Text.Trim().Equals(productName, StringComparison.OrdinalIgnoreCase));
+            product.Click();
         }
 
         // Methods to verify the 5 elements required for UC-2

@@ -4,8 +4,6 @@ namespace FinalTaskTests.Pages
 {
     public class ProductPage : BasePage
     {
-        private const string PageUrl = "https://www.saucedemo.com/";
-
         private readonly By _addToCartBtn = By.CssSelector("button[data-test='add-to-cart']");
         private readonly By _cartBadge = By.CssSelector(".shopping_cart_badge");
 

@@ -15,7 +15,7 @@ namespace FinalTaskTests.Tests
         }
 
         [Test]
-        public void SuccessfulLoginTest()
+        public void UC2_SuccessfulLoginTest()
         {
             TestContext.WriteLine($"[STEP] Executing UC-2 SuccessfulLoginTest on {Browser}");
 
@@ -39,15 +39,15 @@ namespace FinalTaskTests.Tests
 
         [TestCase("standard_user")]
         [TestCase("locked_out_user")]
-        public void LoginWithoutInvalidPassword_ShouldShowErrorMessage(string username)
+        public void UC1_LoginWithoutPassword_ShouldShowErrorMessage(string username)
         {
-            TestContext.WriteLine($"[STEP] Executing UC-1 LoginWithoutInvalidPassword for '{username}' on {Browser}");
+            TestContext.WriteLine($"[STEP] Executing UC-1 LoginWithoutPassword for '{username}' on {Browser}");
 
             Driver.Navigate().GoToUrl(url);
 
             var loginPage = new LoginPage(Driver);
 
-            loginPage.LoginWithUserName(username, "secret");
+            loginPage.LoginWithClearedPassword(username, "secret");
 
             loginPage.GetErrorMessage().Should().Contain("Password is required");
         }

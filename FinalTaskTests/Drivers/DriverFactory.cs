@@ -22,7 +22,6 @@ namespace FinalTaskTests.Drivers
             var options = new ChromeOptions();
             options.AddArgument("--window-size=1920,1080");
             options.AddArgument("--start-maximized");
-            // options.AddArgument("--headless"); // Enable for CI/CD
             return new ChromeDriver(options);
         }
 
@@ -31,7 +30,6 @@ namespace FinalTaskTests.Drivers
             var options = new FirefoxOptions();
             options.AddArgument("--width=1920");
             options.AddArgument("--height=1080");
-            // options.AddArgument("--headless"); // Enable for CI/CD
             return new FirefoxDriver(options);
         }
     }

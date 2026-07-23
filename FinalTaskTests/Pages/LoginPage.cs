@@ -5,8 +5,6 @@ namespace FinalTaskTests.Pages
 {
     public class LoginPage : BasePage
     {
-        private const string PageUrl = "https://www.saucedemo.com/";
-
         private readonly By _usernameInput = By.Id("user-name");
         private readonly By _passwordInput = By.Id("password");
         private readonly By _loginButton = By.Id("login-button");
@@ -23,7 +21,7 @@ namespace FinalTaskTests.Pages
             WaitUntilClickable(_loginButton).Click();
         }
 
-        public void LoginWithUserName(string username, string password)
+        public void LoginWithClearedPassword(string username, string password)
         {
             WaitUntilElementIsVisible(_usernameInput).SendKeys(username);
 
