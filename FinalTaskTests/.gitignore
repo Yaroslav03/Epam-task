@@ -1,0 +1,31 @@
+## Visual Studio / .NET C# build outputs
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.userossc
+*.suo
+*.userprefs
+*.sln.docstates
+
+## Visual Studio & IDE settings
+.vs/
+.vscode/
+.idea/
+
+## Test Results & Coverage
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## Environment & Logs
+*.log
+*.tmp
+*.env
+
+## OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
