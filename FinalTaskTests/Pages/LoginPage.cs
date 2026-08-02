@@ -16,8 +16,11 @@ namespace FinalTaskTests.Pages
 
         public void Login(string username, string password)
         {
+            TestContext.WriteLine($"[LOG] Entering username");
             WaitUntilElementIsVisible(_usernameInput).SendKeys(username);
+            TestContext.WriteLine($"[LOG] Entering password");
             WaitUntilElementIsVisible(_passwordInput).SendKeys(password);
+            TestContext.WriteLine($"[LOG] Clicking the login button");
             WaitUntilClickable(_loginButton).Click();
         }
 
@@ -29,11 +32,11 @@ namespace FinalTaskTests.Pages
             passwordField.SendKeys(password);
 
             new Actions(Driver)
-                .Click(passwordField)          // фокус на поле
-                .KeyDown(Keys.Control)         // затиснути Ctrl
-                .SendKeys("a")               // виділити все
-                .KeyUp(Keys.Control)           // відпустити Ctrl
-                .SendKeys(Keys.Delete)         // видалити виділене
+                .Click(passwordField)          
+                .KeyDown(Keys.Control)         
+                .SendKeys("a")                 
+                .KeyUp(Keys.Control)           
+                .SendKeys(Keys.Delete)        
                 .Perform();
 
             WaitUntilClickable(_loginButton).Click();

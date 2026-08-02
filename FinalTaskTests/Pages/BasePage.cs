@@ -17,6 +17,9 @@ namespace FinalTaskTests.Pages
 
         protected IWebElement WaitUntilElementIsVisible(By locator)
         {
+            Wait.Message = $"[TIMEOUT] Element with locator '{locator}' was not visible after waiting for 10 seconds.";
+            TestContext.WriteLine($"[PAGE LOG] Waiting for visibility:'{locator}'");
+
             return Wait.Until(d =>
             {
                 try
@@ -37,6 +40,9 @@ namespace FinalTaskTests.Pages
 
         protected IWebElement WaitUntilClickable(By locator)
         {
+            Wait.Message = $"[TIMEOUT] Element with locator '{locator}' was not clickable after 10 seconds.";
+            TestContext.WriteLine($"[PAGE LOG] Waiting for elements to be clickable:'{locator}'");
+
             return Wait.Until(d =>
             {
                 try

@@ -13,13 +13,14 @@ namespace FinalTaskTests.Pages
 
         public void AddToCart()
         {
-            var btn = WaitUntilClickable(_addToCartBtn);
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].click();", btn);
+            TestContext.WriteLine($"[ACTION] Clicking the 'Add to Cart' button");
+            WaitUntilClickable(_addToCartBtn).Click();
         }
 
         public string GetCartBadgeCount()
         {
-            return WaitUntilElementIsVisible(_cartBadge).Text;   
+            var text =  WaitUntilElementIsVisible(_cartBadge).Text;   
+            return int.TryParse(text, out var count) ? count.ToString() : "0";
         }
     }
 }

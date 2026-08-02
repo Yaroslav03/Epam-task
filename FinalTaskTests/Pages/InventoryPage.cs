@@ -19,10 +19,18 @@ namespace FinalTaskTests.Pages
 
         public void OpenByNameProduct(string productName)
         {
+            TestContext.WriteLine($"[LOG] Opening the product: '{productName}'");
+
             WaitUntilElementIsVisible(productLink);
             var allProducts = Driver.FindElements(productLink);
 
             var product = allProducts.First(p => p.Text.Trim().Equals(productName, StringComparison.OrdinalIgnoreCase));
+
+            if (product is null)
+            {
+                throw new NoSuchElementException($"Product with name '{productName}' not found.");
+            }
+
             product.Click();
         }
 
